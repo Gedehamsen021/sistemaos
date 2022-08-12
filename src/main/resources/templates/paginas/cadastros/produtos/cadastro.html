@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="componentes/layout.html">
+
+<head>
+	<!-- Bootstrap core CSS -->
+	<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="/webjars/open-iconic/font/css/open-iconic-bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../../css/clientes.css" th:href="@{/css/clientes.css}" />
+	<script src="/webjars/jquery/jquery.min.js"></script>
+	<script src="/webjars/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<!-- Custom styles for this template -->
+</head>
+
+<body>
+	<div layout:fragment="content" class="registro">
+		<div th:replace="componentes/alerta_aviso"></div>
+		<form th:action="${produtos.id == null} ? @{/produtos/salvar} : @{/produtos/editar}" th:object="${produtos}"
+			method="POST" id="enviar">
+			<label class="col-md-4">DADOS CADASTRAIS</label>
+			<div class="form-row">
+				<div class="col-md-3" th:classappend="${#fields.hasErrors('codigo')} ? 'is-valid'">
+					<label class="col-md-3 control-label">Codigo</label>
+					<div class="col">
+						<input id="codigo" name="codigo" placeholder="Codigo" class="form-control" type="text"
+							maxlength="14" th:field="*{codigo}" required>
+						<span th:errors="*{codigo}"></span>
+					</div>
+				</div>
+				<div class="col" th:classappend="${#fields.hasErrors('descricao')} ? 'is-valid'">
+					<label class="col-md-2 control-label">Descrição</label>
+					<div class="col">
+						<input id="descricao" name="descricao" placeholder="descrição" class="form-control input-lg"
+							type="text" th:field="*{descricao}" maxlength="32" required>
+						<span th:errors="*{descricao}"></span>
+					</div>
+				</div>
+			</div>
+			<hr />
+			<label class="col-md-4">DADOS ADICIONAIS</label>
+			<div class="form-row">
+				<div class="col-md-2" th:classappend="${#fields.hasErrors('preco')} ? 'is-valid'">
+					<label class="col-md-2 control-label">Preço</label>
+					<div class="col">
+						<input id="preco" name="preco" placeholder="Preço do produto" class="form-control" type="text"
+							maxlength="14" th:field="*{preco}" oninput="mascaraMoeda(this, event)" required>
+						<span th:errors="*{codigo}"></span>
+					</div>
+				</div>
+				<div class="col-md-2 mb-3" th:classappend="${#fields.hasErrors('estoque')} ? 'is-valid'">
+					<label class="col-md-5 control-label">Estoque</label>
+					<div class="col">
+						<input id="estoque" name="estoque" placeholder="estoque" class="form-control input-lg"
+							type="text" th:field="*{estoque}" maxlength="32" oninput="verificaNumeros(this)" required>
+						<span th:errors="*{estoque}"></span>
+					</div>
+				</div>
+				<input type="hidden" id="id" th:field="*{id}" />
+			</div>
+			<button type="submit" class="btn btn-primary">Salvar</button>
+		</form>
+		<script th:src="@{/js/cadastro_produto.js}"></script>
+	</div>
+</body>
+
+</html>

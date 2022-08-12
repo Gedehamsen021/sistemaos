@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<head>
+	<title>MaximusOS</title>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<link rel="icon" href="/image/favicon.png" />
+
+	<!-- Bootstrap core CSS -->
+	<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="/webjars/open-iconic/font/css/open-iconic-bootstrap.min.css" rel="stylesheet" />
+	<!-- Custom styles for this template -->
+	<link href="/css/style.css" rel="stylesheet" />
+
+	<head>
+		<meta charset="UTF-8">
+		<!--<title> Drop Down Sidebar Menu | CodingLab </title>-->
+		<link rel="stylesheet" type="text/css" media="all" href="../../css/style.css" th:href="@{/css/style.css}" />
+		<!-- Boxiocns CDN Link -->
+		<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+</head>
+
+<body>
+
+	<body>
+		<div class="sidebar">
+			<div class="logo-details">
+				<i class='bx bx-menu bxl-c-plus-plus'></i>
+				<span class="logo_name">MaximusOS</span>
+			</div>
+			<ul class="nav-links">
+				<li>
+					<a href="/">
+						<i class='bx bx-grid-alt'></i>
+						<span class="link_name">Pagina inicial</span>
+					</a>
+					<ul class="sub-menu blank">
+						<li><a class="link_name" href="/">Pagina inicial</a></li>
+					</ul>
+				</li>
+				<li>
+					<div class="iocn-link">
+						<a>
+							<i class='bx bx-notepad'></i>
+							<span class="link_name">Cadastros</span>
+						</a>
+						<i class='bx bxs-chevron-down arrow'></i>
+					</div>
+					<ul class="sub-menu">
+						<li><a class="link_name">Cadastros</a></li>
+						<li><a href="/clientes/lista">Clientes</a></li>
+						<a>
+							Produtos
+							<i class='bx bxs-chevron-down'></i>
+						</a>
+						<ul class="sub-sub-menu"></ul>
+						<li><a href="/servicos">Fornecedores</a></li>
+					</ul>
+				</li>
+				<li>
+					<div class="iocn-link">
+						<a href="#">
+							<i class='bx bx-user'></i>
+							<span class="link_name">Admin</span>
+						</a>
+						<i class='bx bxs-chevron-down arrow'></i>
+					</div>
+					<ul class="sub-menu">
+						<li><a href="#">Usuarios</a></li>
+						<li><a href="#">Relatorios</a></li>
+					</ul>
+				</li>
+				<li>
+					<div class="profile-details">
+						<div class="profile-content">
+							<!--<img src="image/profile.jpg" alt="profileImg">-->
+						</div>
+						<div class="name-job">
+							<div class="profile_name">Usuario</div>
+						</div>
+						<i class='bx bx-log-out'></i>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<section class="home-section">
+			<div layout:fragment="content">
+				<p>Changing contents</p>
+			</div>
+		</section>
+
+		<!-- Bootstrap core JavaScript
+    ================================================== -->
+		<!-- Deixar aqui no final para funcionamento mais rapido e cache mais leve -->
+		<script src="/webjars/jquery/jquery.min.js"></script>
+		<script src="/webjars/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+		<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+			var url = "";
+			$('button[id*="btn_"]').click(function () {
+				url = "/" + $(this).attr('id').split("_")[1];
+			});
+
+			$('#ok_confirm').click(function () {
+				document.location.href = url;
+			});
+			$(function () {
+				$('[data-toggle="popover"]').popover();
+			});
+			let arrow = document.querySelectorAll(".arrow");
+			for (var i = 0; i < arrow.length; i++) {
+				arrow[i].addEventListener("click", (e) => {
+					let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+					arrowParent.classList.toggle("showMenu");
+				});
+			}
+			let sidebar = document.querySelector(".sidebar");
+			let sidebarBtn = document.querySelector(".bx-menu");
+			console.log(sidebarBtn);
+			sidebarBtn.addEventListener("click", () => {
+				sidebar.classList.toggle("close");
+			});
+			$(document).ready(function () {
+				// fecha o alert após 5s
+				setTimeout(function () {
+					$('.alert-dismissible').alert('close');
+				}, 5000);
+			});
+			//Verificar CPF ou CNPJ
+			var options = {
+				onKeyPress: function (cpf, ev, el, op) {
+					var masks = ['000.000.000-000', '00.000.000/0000-00'];
+					$('.cpfOuCnpj').mask((cpf.length > 14) ? masks[1] : masks[0], op);
+				}
+			}
+
+			$('.cpfOuCnpj').length > 11 ? $('.cpfOuCnpj').mask('00.000.000/0000-00', options) : $('.cpfOuCnpj').mask('000.000.000-00#', options);
+		</script>
+	</body>
+
+</html>

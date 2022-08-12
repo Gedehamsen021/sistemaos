@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="componentes/layout.html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+	<!-- Bootstrap core CSS -->
+	<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="/webjars/open-iconic/font/css/open-iconic-bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../../css/clientes.css" th:href="@{/css/clientes.css}" />
+	<!-- Custom styles for this template -->
+</head>
+
+<body>
+	<div layout:fragment="content">
+		<div th:replace="componentes/alerta_aviso"></div>
+		<div class="ajuste">
+			<div class="g-0">
+				<div>
+					<a class="btn btn-block button" href="/clientes/cadastro" role="button">Adicionar cliente</a>
+				</div>
+			</div>
+			<div class="pesquisa">
+				<p>
+					<i class="oi oi-magnifying-glass"></i><span></span>
+					<button class="btn btn-primary" type="radio" data-toggle="collapse" data-target="#collapseNome" aria-controls="collapseNome">Nome</button>
+				</p>
+				<div class="row">
+					<div class="col">
+						<div class="collapse" id="collapseNome">
+							<nav class="navbar navbar-light">
+								<form class="form-inline" method="GET" th:action="@{/clientes/buscar/nome}">
+									<input class="form-control mr-sm-2" type="search" placeholder="nome" th:name="nome"/>
+								</form>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="table-wrapper">
+				<table class="fl-table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>CLIENTE</th>
+							<th>CPF/CNPJ</th>
+							<th>TELEFONE</th>
+							<th class="acoes">AÇÕES</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="d : ${clientes}">
+							<td th:text="${d.id}"></td>
+							<td th:text="${d.nome}"></td>
+							<td th:text="${d.cpf}"></td>
+							<td th:text="${d.telefone}"></td>
+							<td colspan="2">
+								<a class="btn btn-sm" th:href="@{/clientes/editar/{id} (id=${d.id})}" role="button">
+									<span class="oi oi-eye visualizar" title="Editar" aria-hidden="true"></span>
+								</a>
+								<button th:id="${ 'btn_clientes/excluir/'+ d.id }" type="button" class="btn btn-sm"
+									data-toggle="modal" data-target="#meumodelo">
+									<span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>
+								</button>
+							</td>
+						</tr>
+					<tbody>
+				</table>
+			</div>
+			<div th:replace="componentes/alerta_excluir :: modal"></div>
+		</div>
+	</div>
+</body>
+
+</html>
