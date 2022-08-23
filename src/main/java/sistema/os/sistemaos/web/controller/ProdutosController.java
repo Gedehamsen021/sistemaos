@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import sistema.os.sistemaos.dominio.Produtos;
-import sistema.os.sistemaos.service.ProdutosService;
+import sistema.os.sistemaos.service.Produtos.ProdutosService;
 
 @Controller
 @RequestMapping("/produtos")

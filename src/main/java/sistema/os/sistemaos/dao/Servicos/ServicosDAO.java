@@ -1,4 +1,4 @@
-package sistema.os.sistemaos.dao;
+package sistema.os.sistemaos.dao.Servicos;
 
 import java.util.List;
 

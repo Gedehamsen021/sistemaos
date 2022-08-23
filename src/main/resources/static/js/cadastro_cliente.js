@@ -10,6 +10,7 @@ window.onload = function () {
     desabilita('telefone_fixo');
     desabilita('telefone');
     desabilita('email');
+    desabilita('nome_fant');
 
     if (window.location.href.indexOf("editar") > -1) {
         habilita('nome');
@@ -23,6 +24,7 @@ window.onload = function () {
         habilita('telefone_fixo');
         habilita('telefone');
         habilita('email');
+        habilita('nome_fant');
     }
 };
 function verificaNumeros(numero) {
@@ -339,6 +341,7 @@ function formata_cpf_cnpj(valor) {
             habilita('telefone_fixo');
             habilita('telefone');
             habilita('email');
+            habilita('nome_fant');
         }
 
     }
@@ -367,6 +370,7 @@ function formata_cpf_cnpj(valor) {
             habilita('telefone_fixo');
             habilita('telefone');
             habilita('email');
+            habilita('nome_fant');
         }
 
     }
@@ -389,6 +393,7 @@ $(function () {
                             'dataType': 'jsonp',
                             'success': function (data) {
                                 document.getElementById('nome').value = data.nome;
+                                document.getElementById('nome_fant').value = data.fantasia;
                                 document.getElementById('rua').value = data.logradouro;
                                 document.getElementById('complemento').value = data.complemento;
                                 document.getElementById('numero').value = data.numero;

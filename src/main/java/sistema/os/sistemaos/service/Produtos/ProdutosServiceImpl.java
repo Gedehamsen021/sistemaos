@@ -1,4 +1,4 @@
-package sistema.os.sistemaos.service;
+package sistema.os.sistemaos.service.Produtos;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import sistema.os.sistemaos.dao.ProdutosDAO;
+import sistema.os.sistemaos.dao.Produtos.ProdutosDAO;
 import sistema.os.sistemaos.dominio.Produtos;
 
 @Service
@@ -34,7 +34,7 @@ public class ProdutosServiceImpl implements ProdutosService {
 
     @Override
     public List<Produtos> buscarPorCodigo(String codigo) {
-        return dao.buscarCodigo(codigo);
+        return dao.findByCodigo(codigo);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class ProdutosServiceImpl implements ProdutosService {
 
     @Override
     public List<Produtos> buscarPorDescricao(String descricao) {
-        return dao.buscarPorDescricao(descricao);
+        return dao.findByDescricao(descricao);
     }
 
 }

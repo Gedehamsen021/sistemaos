@@ -16,7 +16,7 @@
 <body>
 	<div layout:fragment="content" class="registro">
 		<div th:replace="componentes/alerta_aviso"></div>
-		<form th:action="${clientes.id == null} ? @{/clientes/salvar} : @{/clientes/editar}" th:object="${clientes}"
+		<form th:action="${fornecedores.id == null} ? @{/fornecedores/salvar} : @{/fornecedores/editar}" th:object="${fornecedores}"
 			method="POST" id="enviar">
 			<label class="col-md-4">DADOS CADASTRAIS</label>
 			<div class="form-row">
@@ -134,8 +134,7 @@
 				Salvar
 			</button>
 		</form>
-		<script th:src="@{/js/cadastro_cliente.js}"></script>
+		<script th:src="@{/js/cadastro_fornecedor.js}"></script>
 	</div>
 </body>
-
 </html>

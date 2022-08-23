@@ -16,7 +16,7 @@
 		<div class="ajuste">
 			<div class="g-0">
 				<div>
-					<a class="btn btn-block button" href="/clientes/cadastro" role="button">Adicionar cliente</a>
+					<a class="btn btn-block button" href="/fornecedores/cadastro" role="button">Adicionar fornecedor</a>
 				</div>
 			</div>
 			<div class="pesquisa">
@@ -28,7 +28,7 @@
 					<div class="col">
 						<div class="collapse" id="collapseNome">
 							<nav class="navbar navbar-light">
-								<form class="form-inline" method="GET" th:action="@{/clientes/buscar/nome}">
+								<form class="form-inline" method="GET" th:action="@{/fornecedores/buscar/nome}">
 									<input class="form-control mr-sm-2" type="search" placeholder="nome" th:name="nome"/>
 								</form>
 							</nav>
@@ -41,20 +41,20 @@
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>CLIENTE</th>
+							<th>FORNECEDOR</th>
 							<th>CPF/CNPJ</th>
 							<th>TELEFONE</th>
 							<th class="acoes">AÇÕES</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="d : ${clientes}">
+						<tr th:each="d : ${fornecedores}">
 							<td th:text="${d.id}"></td>
 							<td th:text="${d.nome}"></td>
 							<td th:text="${d.cpf}"></td>
 							<td th:text="${d.telefone}"></td>
 							<td colspan="2">
-								<a class="btn btn-sm" th:href="@{/clientes/editar/{id} (id=${d.id})}" role="button">
+								<a class="btn btn-sm" th:href="@{/fornecedores/editar/{id} (id=${d.id})}" role="button">
 									<span class="oi oi-pencil visualizar" title="Editar" aria-hidden="true"></span>
 								</a>
 								<button th:id="${ 'btn_clientes/excluir/'+ d.id }" type="button" class="btn btn-sm"

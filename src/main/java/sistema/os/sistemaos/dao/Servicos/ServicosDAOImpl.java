@@ -1,7 +1,8 @@
-package sistema.os.sistemaos.dao;
+package sistema.os.sistemaos.dao.Servicos;
 
 import org.springframework.stereotype.Repository;
 
+import sistema.os.sistemaos.dao.DaoAbstrato;
 import sistema.os.sistemaos.dominio.Servicos;
 
 @Repository

@@ -1,4 +1,4 @@
-package sistema.os.sistemaos.dao;
+package sistema.os.sistemaos.dao.Clientes;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public interface ClientesDAO {
 
     List<Clientes> findAll();
 
-    List<Clientes> buscarCPF(String cpf);
+    List<Clientes> findByCPF(String cpf);
 
     List<Clientes> findByNome(String nome);
 

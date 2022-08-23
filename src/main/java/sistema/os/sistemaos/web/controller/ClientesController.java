@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import sistema.os.sistemaos.dominio.Clientes;
-import sistema.os.sistemaos.service.ClientesService;
+import sistema.os.sistemaos.service.Clientes.ClientesService;
 
 @Controller
 @RequestMapping("/clientes")
@@ -65,7 +65,10 @@ public class ClientesController {
 
     //Ao editar quando salvar vai rodar esse metodo preenchendo todos os dados necessarios
     @PostMapping("/editar")
-    public String editar(Clientes clientes, RedirectAttributes attr) {
+    public String editar(Clientes clientes, RedirectAttributes attr,@Valid Clientes cliente,BindingResult erros) {
+        if(erros.hasErrors()) {
+            return "paginas/cadastros/clientes/cadastro";
+        }
         clienteservice.editar(clientes);
         attr.addFlashAttribute("concluido","Cliente editado com sucesso");
         //Retorna para a pagina de cadastro com todos os campos limpos

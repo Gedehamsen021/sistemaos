@@ -1,4 +1,4 @@
-package sistema.os.sistemaos.service;
+package sistema.os.sistemaos.service.Produtos;
 
 import java.util.List;
 

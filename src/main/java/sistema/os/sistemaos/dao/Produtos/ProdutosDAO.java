@@ -1,4 +1,4 @@
-package sistema.os.sistemaos.dao;
+package sistema.os.sistemaos.dao.Produtos;
 
 import java.util.List;
 
@@ -16,8 +16,8 @@ public interface ProdutosDAO {
 
     List<Produtos> findAll();
 
-    List<Produtos> buscarCodigo(String codigo);
+    List<Produtos> findByCodigo(String codigo);
 
-    List<Produtos> buscarPorDescricao(String descricao);
+    List<Produtos> findByDescricao(String descricao);
 
 }

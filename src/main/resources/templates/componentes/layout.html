@@ -56,12 +56,8 @@
 					<ul class="sub-menu">
 						<li><a class="link_name">Cadastros</a></li>
 						<li><a href="/clientes/lista">Clientes</a></li>
-						<a>
-							Produtos
-							<i class='bx bxs-chevron-down'></i>
-						</a>
-						<ul class="sub-sub-menu"></ul>
-						<li><a href="/servicos">Fornecedores</a></li>
+						<li><a href="/produtos/lista">Produtos</a></li>
+						<li><a href="/fornecedores/lista">Fornecedores</a></li>
 					</ul>
 				</li>
 				<li>
@@ -134,15 +130,6 @@
 					$('.alert-dismissible').alert('close');
 				}, 5000);
 			});
-			//Verificar CPF ou CNPJ
-			var options = {
-				onKeyPress: function (cpf, ev, el, op) {
-					var masks = ['000.000.000-000', '00.000.000/0000-00'];
-					$('.cpfOuCnpj').mask((cpf.length > 14) ? masks[1] : masks[0], op);
-				}
-			}
-
-			$('.cpfOuCnpj').length > 11 ? $('.cpfOuCnpj').mask('00.000.000/0000-00', options) : $('.cpfOuCnpj').mask('000.000.000-00#', options);
 		</script>
 	</body>
 

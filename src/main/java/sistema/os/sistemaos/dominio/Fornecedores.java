@@ -1,18 +1,16 @@
 package sistema.os.sistemaos.dominio;
 
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.*;
-
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity // Classe é uma entidade
-@Table(name = "CLIENTES") // Tabela ORDEMS vinculada a esta entidade
-public class Clientes extends EntidadeAbstrata<Long> {
-
+@Table(name = "FORNECEDORES")
+public class Fornecedores extends EntidadeAbstrata<Long> {
     @NotNull(message = "Informe o CPF")
     @Column(name = "cpf_cnpj", nullable = false, unique = true, length = 18)
     private String cpf;
@@ -62,8 +60,14 @@ public class Clientes extends EntidadeAbstrata<Long> {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(mappedBy = "cliente")
-    private List<Servicos> OS;
+
+    public String getCpf() {
+        return this.cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
     public String getNome() {
         return this.nome;
@@ -73,10 +77,13 @@ public class Clientes extends EntidadeAbstrata<Long> {
         this.nome = nome;
     }
 
-    public String getCpf() {
-        return this.cpf;
+    public String getNome_fant() {
+        return this.nome_fant;
     }
 
+    public void setNome_fant(String nome_fant) {
+        this.nome_fant = nome_fant;
+    }
 
     public String getLogradouro() {
         return this.logradouro;
@@ -150,18 +157,6 @@ public class Clientes extends EntidadeAbstrata<Long> {
         this.telefone_fixo = telefone_fixo;
     }
 
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public List<Servicos> getOS() {
-        return this.OS;
-    }
-    public void setOS(List<Servicos> OS) {
-        this.OS = OS;
-    }
-
     public String getEmail() {
         return this.email;
     }
@@ -169,15 +164,4 @@ public class Clientes extends EntidadeAbstrata<Long> {
     public void setEmail(String email) {
         this.email = email;
     }
-
-
-    public String getNome_fant() {
-        return this.nome_fant;
-    }
-
-    public void setNome_fant(String nome_fant) {
-        this.nome_fant = nome_fant;
-    }
-
-
 }

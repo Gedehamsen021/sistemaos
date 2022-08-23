@@ -1,4 +1,4 @@
-package sistema.os.sistemaos.service;
+package sistema.os.sistemaos.service.Clientes;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import sistema.os.sistemaos.dao.ClientesDAO;
+import sistema.os.sistemaos.dao.Clientes.ClientesDAO;
 import sistema.os.sistemaos.dominio.Clientes;
 
 //TODO:Documentar aqui
@@ -52,7 +52,7 @@ public class ClientesServiceImpl implements ClientesService{
 
     @Override
     public List<Clientes> buscarCPF(String cpf) {
-        return dao.buscarCPF(cpf);
+        return dao.findByCPF(cpf);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package sistema.os.sistemaos.service;
+package sistema.os.sistemaos.service.Clientes;
 
 import java.util.List;
 

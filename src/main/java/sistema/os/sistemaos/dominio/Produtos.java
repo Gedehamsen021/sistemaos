@@ -32,6 +32,7 @@ public class Produtos extends EntidadeAbstrata<Long> {
     @Column(name = "grupo")
     private String grupo;
 
+    
     @Column(name = "fornecedor")
     private String fornecedor;
 
